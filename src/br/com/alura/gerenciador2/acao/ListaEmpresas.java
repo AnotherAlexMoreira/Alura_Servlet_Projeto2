@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class ListaEmpresa {
+public class ListaEmpresas implements Acao{
 
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -18,6 +18,6 @@ public class ListaEmpresa {
 
         request.setAttribute("empresas", lista);
 
-        return "forward:/mostraEmpresa.jsp";
+       return "forward:listaEmpresas.jsp";
     }
 }

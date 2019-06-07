@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao{
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String nomeEmpresa = request.getParameter("nome");
@@ -33,6 +33,6 @@ public class NovaEmpresa {
         Banco banco = new Banco();
         banco.adiciona(empresa);
 
-        return "redirect:entrada?acao=ListaEmpresa";
+        return "redirect:entrada?acao=ListaEmpresas";
     }
 }

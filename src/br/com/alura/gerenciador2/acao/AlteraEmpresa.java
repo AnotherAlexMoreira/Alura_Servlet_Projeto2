@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AlteraEmpresa {
+public class AlteraEmpresa implements Acao{
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String nomeEmpresa = request.getParameter("nome");
@@ -33,7 +33,7 @@ public class AlteraEmpresa {
         empresa.setNome(nomeEmpresa);
         empresa.setDataAbertura(dataAbertura);
 
-        return "redirect:entrada?acao=ListaEmpresa";
+        return "redirect:entrada?acao=ListaEmpresas";
 
 
     }

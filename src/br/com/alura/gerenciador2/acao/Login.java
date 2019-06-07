@@ -1,25 +1,27 @@
 package br.com.alura.gerenciador2.acao;
 
 import br.com.alura.gerenciador2.modelo.Banco;
-import br.com.alura.gerenciador2.modelo.Empresa;
+import br.com.alura.gerenciador2.modelo.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MostraEmpresa implements Acao{
+public class Login implements Acao {
+
+    @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String paramId = request.getParameter("id");
-        Integer id = Integer.valueOf(paramId);
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
 
         Banco banco = new Banco();
-        Empresa empresa = banco.buscaEmpresaPelaId(id);
+        Usuario usuario = banco.existeUsuario(login, senha);
 
-        request.setAttribute("empresa", empresa);
+        if (usuario != null){
 
-        return "forward:formAlteraEmpresa.jsp";
-
+        }
+        return "redirect:entrada?acao=ListaEmpresas";
     }
 }
