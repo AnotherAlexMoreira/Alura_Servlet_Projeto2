@@ -21,10 +21,10 @@ public class Usuario {
     }
 
     public boolean ehIgual(String login, String senha){
-        if (this.login.equals(login)){
+        if (!this.login.equals(login)){
             return false;
         }
-        if (this.senha.equals(senha)){
+        if (!this.senha.equals(senha)){
             return false;
         }
         return true;

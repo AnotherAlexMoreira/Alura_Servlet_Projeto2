@@ -24,11 +24,11 @@ public class Banco {
 
         Usuario u1 = new Usuario();
         u1.setLogin("Zoom");
-        u1.setSenha("123");
+        u1.setSenha("12345");
 
         Usuario u2 = new Usuario();
         u2.setLogin("Alex");
-        u2.setSenha("123");
+        u2.setSenha("12345");
 
         listaUsuarios.add(u1);
         listaUsuarios.add(u2);
