@@ -24,5 +24,6 @@
     <orderEntry type="library" name="jstl-1.21" level="project" />
     <orderEntry type="library" name="jstl1" level="project" />
     <orderEntry type="library" name="servlet-api1" level="project" />
+    <orderEntry type="library" name="gson-2.8.5" level="project" />
   </component>
 </module>

@@ -12,6 +12,7 @@
           <element id="library" level="project" name="jstl-1.21" />
           <element id="library" level="project" name="jsp-api-2.1" />
           <element id="library" level="project" name="servlet-api1" />
+          <element id="library" level="project" name="gson-2.8.5" />
         </element>
       </element>
     </root>
