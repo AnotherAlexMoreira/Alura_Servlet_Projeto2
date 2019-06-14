@@ -13,6 +13,7 @@
     <title>Title</title>
 </head>
 <body>
+    <h3>Usuario Logado: ${usuarioLogado.login}<c:import url="logoutParcial.jsp"></c:import></h3>
     <form action="${linkEntradaServlet}" method="POST">
         Nome: <input type="text" name="nome">
         Data abertura: <input type="text" name="data">

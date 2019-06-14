@@ -15,7 +15,9 @@
     <title>Title</title>
 </head>
 <body>
-<h4>Empresas cadastradas</h4>
+
+    <h3>Usuario Logado: ${usuarioLogado.login}<c:import url="logoutParcial.jsp"></c:import></h3>
+    <h4>Empresas cadastradas</h4>
     <ul>
         <c:forEach items="${empresas}" var="empresa">
 

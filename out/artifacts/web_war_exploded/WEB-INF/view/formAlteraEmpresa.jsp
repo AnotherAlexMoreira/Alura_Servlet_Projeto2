@@ -15,6 +15,7 @@
     <title>Title</title>
 </head>
 <body>
+    <h3>Usuario Logado: ${usuarioLogado.login}  <c:import url="logoutParcial.jsp"></c:import></h3>
     <form action="/gerenciador/entrada" method="POST">
         Nome: <input type="text" name="nome" value="${empresa.nome}">
         Data abertura: <input type="text" name="data" value="<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>"/>
