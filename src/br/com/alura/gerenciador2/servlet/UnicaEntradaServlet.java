@@ -8,25 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void chamaAcao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String paramAcao = request.getParameter("acao");
-        HttpSession sessao = request.getSession();
-        boolean usuarioNaoEstaLogado = (sessao.getAttribute("usuarioLogado") == null);
-        boolean ehUmaAcaoProtegida = paramAcao.equals("ListaEmpresas");
-
-        if(ehUmaAcaoProtegida & usuarioNaoEstaLogado) {
-            response.sendRedirect("entrada?acao=LoginForm");
-            return;
-        }
-
         String nome = null;
-
         String nomeDaClasse = "br.com.alura.gerenciador2.acao." + paramAcao;
 
 
@@ -49,45 +38,14 @@ public class UnicaEntradaServlet extends HttpServlet {
             rd.forward(request, response);
         } else {
             response.sendRedirect(tipoEEndereco[1]);
-
         }
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        chamaAcao(request, response);
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String paramAcao = request.getParameter("acao");
-        HttpSession sessao = request.getSession();
-        boolean usuarioNaoEstaLogado = (sessao.getAttribute("usuarioLogado") == null);
-        boolean ehUmaAcaoProtegida = paramAcao.equals("ListaEmpresas");
-
-        if(ehUmaAcaoProtegida & usuarioNaoEstaLogado) {
-            response.sendRedirect("entrada?acao=LoginForm");
-            return;
-        }
-        String nome = null;
-
-        String nomeDaClasse = "br.com.alura.gerenciador2.acao." + paramAcao;
-
-
-        try {
-            Class classe = Class.forName(nomeDaClasse);
-            Acao acao = (Acao) classe.newInstance();
-            nome = acao.executa(request, response);
-        } catch (IllegalAccessException e) {
-            throw new ServletException(e);
-        } catch (InstantiationException e) {
-            throw new ServletException(e);
-        } catch (ClassNotFoundException e) {
-            throw new ServletException(e);
-        }
-
-
-        String[] tipoEEndereco = nome.split(":");
-        if(tipoEEndereco[0].equals("forward")) {
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoEEndereco[1]);
-            rd.forward(request, response);
-        } else {
-            response.sendRedirect(tipoEEndereco[1]);
-
-        }
+        chamaAcao(request, response);
     }
 }
